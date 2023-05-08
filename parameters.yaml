@@ -1,0 +1,14 @@
+vocabulary: ['2', '3', '4', '5', '6', '7', '8', 'b', 'c', 'd', 'e', 'f', 'g', 'm', 'n', 'p', 'w', 'x', 'y']
+
+batch_size: 16
+img_width: 200
+img_height: 50
+
+# Usaremos dos capas de convolución que reduce la imagen en un factor de 2
+downsample_factor: 4
+# Máximo de carácteres que tiene un captcha
+length_characters: 5
+# número de épocas
+epochs: 5
+# activamos la parada anticipada si es que en las siguientes x epocas no hay mejora
+early_stopping_patience: 10
