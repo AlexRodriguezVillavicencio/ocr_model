@@ -4,7 +4,7 @@ button_detection.disabled = true;
 function startWebcam() {
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({video:{
-      width: 200,
+      // width: 200,
       height:50,
       facingMode: 'environment'
   }})
