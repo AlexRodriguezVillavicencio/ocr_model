@@ -1,54 +1,54 @@
   
 // init camera
 const webcam_video = document.querySelector('#webcam__video')
-webcam_video.style.transform = "scaleX(-1)";
+// webcam_video.style.transform = "scaleX(-1)";
 
 // draw image 
 const snap = document.getElementById("snap");
 const canvas2 = document.getElementById('canvas2');
 var context = canvas2.getContext('2d');
-canvas2.style.transform = "scaleX(-1)";
+// canvas2.style.transform = "scaleX(-1)";
+
+const texto_insertado = document.getElementById("textoInsertado");
 
 // var contador = []
 snap.addEventListener("click", function() {
     var countmatrix = [];
     
-    context.drawImage(webcam_video, 0, 0, 200,50); // generate image
+    context.drawImage(webcam_video, 0, 0); // generate image
     const dataURL = canvas2.toDataURL(); // generate base 64
-    
+    console.log(dataURL);
+
     const formData = new FormData();
-    formData.append("image", dataURL);
-    
-    fetch('http://127.0.0.1:8000/image',{
+    formData.append("base64Image", dataURL);
+    formData.append("language"   , "eng");
+    formData.append("apikey"  , "K87428168588957");
+    fetch('https://api.ocr.space/parse/image',{
         method: 'POST', 
-        headers: {
-         'Content-type': 'application/json',
-         'Accept': 'application/json'
-        },
-        // body: formData
-        body: JSON.stringify({"image":dataURL})
+        // headers: {
+        //  'Content-type': 'application/json',
+        //  'Accept': 'application/json'
+        // },
+        body: formData
+        // body: JSON.stringify({"image":dataURL})
       })
    .then((response) => response.json())
-   .then((data) => 
+   .then((ocrParsedResult) => 
    {
-    const datos = "data:image/png;base64," + data.image;
-    countmatrix.push(data.detections)
-    // collecting the image
-    var img = new Image();
-    img.src = datos;
+    // Obtener los resultados analizados, código de salida de OCR y otros datos
+    const parsedResults = ocrParsedResult["ParsedResults"];
+    const ocrExitCode = ocrParsedResult["OCRExitCode"];
+    const isErroredOnProcessing = ocrParsedResult["IsErroredOnProcessing"];
+    const errorMessage = ocrParsedResult["ErrorMessage"];
+    const errorDetails = ocrParsedResult["ErrorDetails"];
+    const processingTimeInMilliseconds = ocrParsedResult["ProcessingTimeInMilliseconds"];
     
-    img.onload = function() {
-        context.drawImage(img, 0, 0,200,50);
-    }
-
-    for (let a = 0; a<countmatrix[0].length;a++){
-        for(let b = 0; b < classes.length; b++){
-            if (countmatrix[0][a] == classes[b]){
-                datachart[b] += 1;
-            }
-        }
-    }
-    updateData(charttopbar, datachart)
-   }
+    console.log('Estamos en la respuesta de la API:');
+    texto_insertado.innerHTML = parsedResults[0]['ParsedText'];
+  })
+  .catch(error => {
+    console.log('Error en la solicitud:', error);
+  }
    );
 });
+
