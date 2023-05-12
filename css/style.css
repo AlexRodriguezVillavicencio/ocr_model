@@ -24,7 +24,7 @@ h1{
 .container__window{
     width: 200px;
     height: 50px;
-    background-color: rgb(54, 54, 54);
+    background-color: rgb(34, 219, 188);
     display: flex;
     flex-direction: column;
     position: relative;
