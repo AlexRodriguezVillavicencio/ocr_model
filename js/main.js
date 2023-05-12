@@ -13,7 +13,7 @@ canvas2.style.transform = "scaleX(-1)";
 snap.addEventListener("click", function() {
     var countmatrix = [];
     
-    context.drawImage(webcam_video, 0, 0, 280,200); // generate image
+    context.drawImage(webcam_video, 0, 0, 200,50); // generate image
     const dataURL = canvas2.toDataURL(); // generate base 64
     
     const formData = new FormData();
@@ -38,7 +38,7 @@ snap.addEventListener("click", function() {
     img.src = datos;
     
     img.onload = function() {
-        context.drawImage(img, 0, 0,280,200);
+        context.drawImage(img, 0, 0,200,50);
     }
 
     for (let a = 0; a<countmatrix[0].length;a++){

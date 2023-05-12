@@ -4,61 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Demo Walle</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <video id="videoElement" autoplay>
-    </video>
-    <button style="background-color: red; width:200px; height:100px" id="fullscreenButton">iniciar</button>
-    <script>
-// Obtener el botón en el DOM para activar la pantalla completa
-const fullscreenButton = document.getElementById('fullscreenButton');
-
-
-// Agregar un manejador de eventos al botón
-fullscreenButton.addEventListener('click', function() {
-    if (videoElement.requestFullscreen) {
-        // Solicitar el modo de pantalla completa
-        videoElement.requestFullscreen()
-          .then(function() {
-            // La cámara se muestra a pantalla completa
-
-// Verificar si el navegador admite la API de MediaDevices
-if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    // Acceder al dispositivo de medios (cámara)
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-      .then(function(stream) {
-        // Obtener el elemento de video en el DOM
-        const videoElement = document.getElementById('videoElement');
-  
-        // Asignar el flujo de la cámara al elemento de video
-        videoElement.srcObject = stream;
-        videoElement.play();
-      })
-      .catch(function(error) {
-        console.log('Error al acceder a la cámara:', error);
-      });
-  } else {
-    console.log('La API de MediaDevices no es compatible con este navegador.');
-  }
-
-
-
-
-
-
-
-
-
-
-          })
-          .catch(function(error) {
-            console.log('Error al entrar en modo de pantalla completa:', error);
-          });
-      } else {
-        console.log('El modo de pantalla completa no es compatible con este navegador.');
-      }
-});
-    </script>
+    <div class="container__main">
+        <div class="container__window">
+            <div class="container__video">
+                <div id="container__video1">
+                    <button onclick="startWebcam()">Iniciar camara</button>
+                    <button onclick="stopWebcam()">Detener camara</button>
+                    <br> <br>
+                    <video id="webcam__video" autoplay></video>
+                    <br> <br>
+                    <button id="snap" >detectar</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style="height:50px; width:200px; margin-top:10px; margin-left:70px; background-color:rgb(65, 21, 105)">
+                <canvas height="200px" width="50px" id="canvas2"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="js/camera.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
