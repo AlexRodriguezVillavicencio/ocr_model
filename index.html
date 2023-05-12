@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Walle</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container__main">
+        <div class="container__window">
+            <div class="container__video">
+                <div id="container__video1">
+                    <button onclick="startWebcam()">Iniciar camara</button>
+                    <button onclick="stopWebcam()">Detener camara</button>
+                    <br> <br>
+                    <video id="webcam__video" autoplay></video>
+                    <br> <br>
+                    <button id="snap" >detectar</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style="height:200px; width:280px; margin-top:10px; margin-left:70px; background-color:rgb(65, 21, 105)">
+                <canvas height="200px" width="280px" id="canvas2"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="js/camera.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
