@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{# <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,5 +29,40 @@
     </div>
     <script src="js/camera.js"></script>
     <script src="js/main.js"></script>
+</body>
+</html> #}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <video id="videoElement" autoplay>
+
+    </video>
+    <script>
+        // Verificar si el navegador admite la API de MediaDevices
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        // Acceder al dispositivo de medios (cámara)
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+        .then(function(stream) {
+        // Obtener el elemento de video en el DOM
+        const videoElement = document.getElementById('videoElement');
+  
+        // Asignar el flujo de la cámara al elemento de video
+        videoElement.srcObject = stream;
+        videoElement.play();
+      })
+      .catch(function(error) {
+        console.log('Error al acceder a la cámara:', error);
+      });
+  } else {
+    console.log('La API de MediaDevices no es compatible con este navegador.');}
+    </script>
 </body>
 </html>
