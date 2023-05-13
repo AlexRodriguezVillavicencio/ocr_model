@@ -1,35 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo Walle</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <nav>
+        <h1>OCR</h1>
+    </nav>
+    <hr>
     <div class="container__main">
         <div class="container__window">
             <div class="container__video">
-                <div id="container__video1">
-                    <button onclick="startWebcam()">Iniciar camara</button>
-                    <button onclick="stopWebcam()">Detener camara</button>
-                    <br> <br>
                     <video id="webcam__video" autoplay></video>
-                    <br> <br>
-                    <button id="snap" >detectar</button>
+                    <canvas id="canvas"></canvas>
                 </div>
             </div>
         </div>
-        <div>
-            <div style="height:50px; width:200px; margin-top:10px; margin-left:70px; background-color:rgb(65, 21, 105)">
-                <canvas height="50px" width="200px" id="canvas2"></canvas>
-            </div>
+    </div>
+    <div id="textoInsertado"></div>
+    <br>
+    <div class="groupButton" >
+        <div style="display:flex">
+            <button id="initButton" onclick="startWebcam()">
+                <i class="fa-solid fa-play"></i>
+            </button>
+            <button id="stopButton" onclick="stopWebcam()">
+                <i class="fa-solid fa-stop"></i>
+            </button>
         </div>
+        <button id="snap" >
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </button>
     </div>
     <br>
-    <br>
-    <div id="textoInsertado"></div>
     <script src="js/camera.js"></script>
     <script src="js/main.js"></script>
 </body>

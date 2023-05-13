@@ -13,18 +13,28 @@ h1{
     font-family:Arial, Helvetica, sans-serif;
 }
 
-.container__main{
-    width: 300px;
+/* header */
+nav{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 50px;
+    background-color: rgb(66, 35, 35);
     display: flex;
-    gap: 60px;
-    margin: auto;
-    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.container__main{
+    display: flex;
+    position: absolute;
+    top: 50px;
 }
 
 .container__window{
     width: 200px;
     height: 50px;
-    background-color: rgb(34, 219, 188);
+    background-color: rgb(35, 44, 43);
     display: flex;
     flex-direction: column;
     position: relative;
@@ -46,4 +56,26 @@ h1{
 #webcam__video{
     width: 200px;
     height: 50px;
+}
+
+/* button */
+.groupButton{
+    width: 100vw;
+    background-color: rgb(58, 59, 59);
+    height: 120px;
+    bottom:0;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.groupButton button{
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    border-radius: 50%;
+    filter: invert(100%);
+    background-color: transparent;
 }
