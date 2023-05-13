@@ -104,13 +104,9 @@ canvas{
 /* warning */
 .movil__warning{
     display: none;
-    top: 200px;
-    width: 100vw;
-    height: 100px;
-    position: fixed;
 }
 
-@media (min-width: 540px) {
+@media (min-width: 620px) {
     .text__group{
         display: none;
     }
@@ -123,5 +119,9 @@ canvas{
     .movil__warning{
         display: flex;
         justify-content: center;
+        top: 200px;
+        width: 100vw;
+        height: 100px;
+        position: fixed;
     }
 }
