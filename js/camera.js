@@ -9,7 +9,7 @@ const initButton = document.getElementById("initButton");
 const canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 const video = document.createElement('video');
-canvas.height = 400;
+canvas.height = 460;
 canvas.width = 460;
 
 function drawVideoFrame() {

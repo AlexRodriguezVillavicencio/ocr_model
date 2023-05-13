@@ -12,18 +12,10 @@
     <nav>
         <h1>OCR</h1>
     </nav>
-    <hr>
-    <div class="container__main">
-        <div class="container__window">
-            <div class="container__video">
-                    <video id="webcam__video" autoplay></video>
-                    <canvas id="canvas"></canvas>
-                </div>
-            </div>
-        </div>
+    <div class="container__video">
+        <canvas id="canvas"></canvas>
     </div>
     <div id="textoInsertado"></div>
-    <br>
     <div class="groupButton" >
         <div style="display:flex">
             <button id="initButton" onclick="startWebcam()">
@@ -37,7 +29,6 @@
             <i class="fa-solid fa-wand-magic-sparkles"></i>
         </button>
     </div>
-    <br>
     <script src="js/camera.js"></script>
     <script src="js/main.js"></script>
 </body>
