@@ -10,7 +10,7 @@ const canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 const video = document.createElement('video');
 canvas.height = 460;
-canvas.width = 460;
+canvas.width = 300;
 
 function drawVideoFrame() {
   context.drawImage(video, 0, 0, canvas.width, canvas.height);
