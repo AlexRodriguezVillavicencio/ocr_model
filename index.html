@@ -15,8 +15,19 @@
     <div class="container__video">
         <canvas id="canvas"></canvas>
     </div>
-    {# <div id="textoInsertado"></div> #}
-    <div class="groupButton" >
+    <div class="text__group">
+        <div class="text">
+            <div id="insertText"></div>
+            <input id="inputText" type="text">
+        </div>
+        <button id="likeButton" onclick="likePrediction()">    
+            <i class="fa-regular fa-thumbs-up"></i>
+        </button>
+        <button id="unlikeButton" >
+            <i class="fa-regular fa-thumbs-down"></i>
+        </button>
+    </div>
+    <div class="group__button" >
         <div style="display:flex">
             <button id="initButton" onclick="startWebcam()">
                 <i class="fa-solid fa-play"></i>
@@ -28,6 +39,10 @@
         <button id="snap" >
             <i class="fa-solid fa-wand-magic-sparkles"></i>
         </button>
+    </div>
+    <!-- warning -->
+    <div class="movil__warning">
+        <h2>Disponible solo para moviles</h2>
     </div>
     <script src="js/camera.js"></script>
     <script src="js/main.js"></script>
