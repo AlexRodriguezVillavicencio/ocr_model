@@ -9,11 +9,15 @@ const initButton = document.getElementById("initButton");
 const canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 const video = document.createElement('video');
-// canvas.height = 320;
-// canvas.width = 320;
 
 canvas.width = 640;
 canvas.height = 480;
+
+const canvas2 = document.getElementById('canvas2');
+const context2 = canvas2.getContext('2d');
+const video2 = document.createElement('video');
+canvas2.width = 320;
+canvas2.height = 80;
 
 let animationId;
 let animationRunning = false;
@@ -22,12 +26,17 @@ function drawVideoFrame() {
 
   if (!animationRunning) return;
 
+  // context.filter = 'blur(5px)';
+  // context.drawImage(video, 0, 0, 640, 480, 0, 0, canvas.width, canvas.height);
+  // context.filter = 'none';
+
   const dwidth = 320;
   const dheight = 80;
   const dx = canvas.width/2 - dwidth/2;
   const dy = canvas.height/2 - dheight/2;
 
   context.drawImage(video, dx, dy, dwidth, dheight, dx, 20, dwidth, dheight);
+  context2.drawImage(video, dx, dy, dwidth, dheight, 0, 20, dwidth, dheight);
   animationId = requestAnimationFrame(drawVideoFrame);
 }
 
