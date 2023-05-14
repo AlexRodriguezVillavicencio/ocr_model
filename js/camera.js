@@ -35,7 +35,7 @@ function drawVideoFrame() {
   const dx = canvas.width/2 - dwidth/2;
   const dy = canvas.height/2 - dheight/2;
 
-  context.drawImage(video, dx, dy, dwidth, dheight, dx, 20, dwidth, dheight);
+  // context.drawImage(video, dx, dy, dwidth, dheight, dx, 20, dwidth, dheight);
   context2.drawImage(video, dx, dy, dwidth, dheight, 0, 20, dwidth, dheight);
   animationId = requestAnimationFrame(drawVideoFrame);
 }
