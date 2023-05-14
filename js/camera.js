@@ -12,49 +12,49 @@ const video = document.createElement('video');
 canvas.height = 320;
 canvas.width = 320;
 
+let animationId;
+let animationRunning = false;
+
 function drawVideoFrame() {
-  // // context.clearRect(0, 0, canvas.width, canvas.height);
-  // context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-  // // Aplicar efecto de desenfoque a todo el canvas
-  // context.filter = 'blur(5px)';
-  // context.globalAlpha = 0.7;
-
-
-  // // Dibujar la ventana de 200x50 sin efecto de desenfoque
-  // const windowWidth = 200;
-  // const windowHeight = 50;
-  // const windowX = (canvas.width - windowWidth) / 2;
-  // const windowY = (canvas.height - windowHeight) / 2;
-  // context.clearRect(0, 0, canvas.width, canvas.height);
   
-  // Aplicar efecto de desenfoque a la mitad izquierda del canvas
+  if (!animationRunning) return;
+
   context.filter = 'blur(5px)';
   context.drawImage(video, 0, 0, canvas.width, canvas.height);
-  // context.fillRect(0, 0, canvas.width, canvas.height);
-
+  console.log(wGlobal, hGlobal)
   // Dibujar la cámara sin efecto de desenfoque en la mitad derecha del canvas
   context.filter = 'none';
-  context.drawImage(video, 240, 80, 240, 80, 0, 220, 320, 60);
+  const dwidth = 320;
+  const dheight = 80;
+  const dx = canvas.width/2 - dwidth/2;
+  const dy = canvas.height/2 - dheight/2;
+  const sheight = dheight;
 
-  requestAnimationFrame(drawVideoFrame);
+  context.drawImage(video, 0, 130, 640, sheight, dx, dy, dwidth, dheight);
+  animationId = requestAnimationFrame(drawVideoFrame);
 }
 
 function startWebcam() {
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({video:{
-      // width: 400,
-      // height: 300,
       facingMode: 'environment'
   }})
   .then((stream) => {
-   window.globalStream = stream;
-   video.srcObject = stream;
-   video.autoplay = true;
+    window.globalStream = stream;
+    video.srcObject = stream;
+    video.autoplay = true;
 
-  video.addEventListener('loadedmetadata', function() {
-    drawVideoFrame();
-  });
+    const track = stream.getVideoTracks()[0];
+    const settings = track.getSettings();
+    const w = settings.width;
+    const h = settings.height;
+    window.wGlobal = w;
+    window.hGlobal = h;
+
+    video.addEventListener('loadedmetadata', function() {
+      animationRunning = true;
+      drawVideoFrame();
+    });
   })
   .catch((error) => {console.log(error)});
   button_detection.disabled = false;
@@ -67,8 +67,11 @@ function startWebcam() {
 }
 
 function stopWebcam() {
+  cancelAnimationFrame(animationId);
   stopButton.style.display = "none";
   initButton.style.display = "block";
   globalStream.getVideoTracks()[0].stop();
   button_detection.disabled = true;
+  animationRunning = false;
+  context.clearRect(0, 0, canvas.width, canvas.height);
 }
