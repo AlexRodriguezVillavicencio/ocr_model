@@ -106,7 +106,7 @@ canvas{
     display: none;
 }
 
-@media (min-width: 620px) {
+@media (min-width: 1020px) {
     .text__group{
         display: none;
     }

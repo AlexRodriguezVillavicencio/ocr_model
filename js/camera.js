@@ -9,28 +9,25 @@ const initButton = document.getElementById("initButton");
 const canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 const video = document.createElement('video');
-canvas.height = 320;
-canvas.width = 320;
+// canvas.height = 320;
+// canvas.width = 320;
+
+canvas.width = 640;
+canvas.height = 480;
 
 let animationId;
 let animationRunning = false;
 
 function drawVideoFrame() {
-  
+
   if (!animationRunning) return;
 
-  context.filter = 'blur(5px)';
-  context.drawImage(video, 0, 0, canvas.width, canvas.height);
-  console.log(wGlobal, hGlobal)
-  // Dibujar la cámara sin efecto de desenfoque en la mitad derecha del canvas
-  context.filter = 'none';
   const dwidth = 320;
   const dheight = 80;
   const dx = canvas.width/2 - dwidth/2;
   const dy = canvas.height/2 - dheight/2;
-  const sheight = dheight;
 
-  context.drawImage(video, 0, 130, 640, sheight, dx, dy, dwidth, dheight);
+  context.drawImage(video, dx, dy, dwidth, dheight, dx, 20, dwidth, dheight);
   animationId = requestAnimationFrame(drawVideoFrame);
 }
 
