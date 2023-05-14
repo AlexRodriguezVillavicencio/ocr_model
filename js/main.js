@@ -2,9 +2,9 @@
 const snap = document.getElementById("snap");
 const insertText = document.getElementById("insertText");
 
-// var contador = []
 snap.addEventListener("click", function() {
-     // generate image
+
+    document.getElementById('snap').disabled = true;
     const dataURL = canvas.toDataURL(); // generate base 64
     console.log(dataURL);
 
@@ -22,14 +22,20 @@ snap.addEventListener("click", function() {
    {
     // Obtener los resultados analizados, código de salida de OCR y otros datos
     const parsedResults = ocrParsedResult["ParsedResults"];
-    // const ocrExitCode = ocrParsedResult["OCRExitCode"];
-    // const isErroredOnProcessing = ocrParsedResult["IsErroredOnProcessing"];
-    // const errorMessage = ocrParsedResult["ErrorMessage"];
-    // const errorDetails = ocrParsedResult["ErrorDetails"];
-    // const processingTimeInMilliseconds = ocrParsedResult["ProcessingTimeInMilliseconds"];
+    const processingTimeInMilliseconds = ocrParsedResult["ProcessingTimeInMilliseconds"];
     
-    console.log('Estamos en la respuesta de la API:');
-    insertText.innerHTML = parsedResults[0]['ParsedText'];
+    setTimeout(() => {
+
+      if (parsedResults[0]['ParsedText'].length !== 0){
+        insertText.innerHTML = parsedResults[0]['ParsedText'];
+        document.getElementById('snap').disabled = false;
+      }
+      else {
+        insertText.innerHTML = "Sin resultado";
+        document.getElementById('snap').disabled = false;
+      }
+
+    }, processingTimeInMilliseconds);
   })
   .catch(error => {
     console.log('Error en la solicitud:', error);
@@ -50,6 +56,7 @@ function sendUnlikPrediction(){
   document.getElementById('unlikeButton').style.display = 'none';
   // 
   // 
+  document.getElementById('snap').disabled = false;
 
 }
 
@@ -62,6 +69,7 @@ unlikeButton.onclick = () => {
     document.getElementById('insertText').style.display = 'none';
     document.getElementById('inputText').style.display = 'block';
     document.getElementById('likeButton').disabled = true;
+    document.getElementById('snap').disabled = true;
     const unlike = document.querySelector('#unlikeButton i')
     unlike.classList.remove('fa-thumbs-down');
     unlike.classList.add('fa-paper-plane')
