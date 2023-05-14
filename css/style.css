@@ -14,9 +14,10 @@ nav{
     position: fixed;
     top: 0;
     width: 100vw;
-    height: 50px;
+    height: 80px;
     background-color: rgb(66, 35, 35);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -24,15 +25,16 @@ nav{
 /* camera */
 .container__video{
     display: flex;
-    top: 50px;
-    /* background-color: aqua; */
+    top: 120px;
     width: 100vw;
-    height: 320px;
+    height: 80px;
     position: relative;
     justify-content: center;
 }
 
 canvas{
+    border: 1px solid #000; /* Establece un borde sólido al div */
+    box-shadow: 0 0 10px 5px #424242;
     position: absolute;
 }
 
@@ -61,7 +63,6 @@ canvas{
 /* text */
 .text__group{
     width: 100vw;
-    /* background-color: cadetblue; */
     bottom: 120px;
     position: fixed;
     height: 60px;
@@ -75,7 +76,6 @@ canvas{
 .text{
     font-size: 25px;
     height: 50px;
-    /* background-color: blueviolet; */
     grid-column-start: 3;
     grid-column-end: span 4;
     display: flex;
@@ -91,6 +91,8 @@ canvas{
     border: none;
     outline: none;
     border-radius: 5px;
+    background-color: rgb(30, 31, 31);
+    color: white !important;
 
 }
 
@@ -101,12 +103,17 @@ canvas{
     filter: invert(100%);
 }
 
+#likeButton,
+#unlikeButton{
+    display: none;
+}
+
 /* warning */
 .movil__warning{
     display: none;
 }
 
-@media (min-width: 1020px) {
+@media (min-width: 540px) {
     .text__group{
         display: none;
     }
