@@ -10,17 +10,17 @@ function ProcessIMG() {
     return blob
   }
   
-  function formDataCSV(prediction){
-    const currentDate = new Date();
-    const urlDate = currentDate.toString()
-          .substring(0, currentDate.toString().lastIndexOf('(')-1)
-          .replace(/\s/g,'_');
-  
-    const formDataCSV = new FormData();
-    formDataCSV.append("url", `../images/${parsedText + "_" + urlDate}`);
-    formDataCSV.append("text", parsedText);
-    formDataCSV.append("prediction", prediction);
-    formDataCSV.append("metadata", currentDate.toString());
-  
-    return { formData: formDataCSV, urlDate: urlDate };
-  }
+function formDataCSV(prediction,text){
+  const currentDate = new Date();
+  const urlDate = currentDate.toString()
+        .substring(0, currentDate.toString().lastIndexOf('(')-1)
+        .replace(/\s/g,'_');
+
+  const formDataCSV = new FormData();
+  formDataCSV.append("url", `../images/${text + "_" + urlDate}`);
+  formDataCSV.append("text", text);
+  formDataCSV.append("prediction", prediction);
+  formDataCSV.append("metadata", currentDate.toString());
+
+  return { formData: formDataCSV, urlDate: urlDate };
+}

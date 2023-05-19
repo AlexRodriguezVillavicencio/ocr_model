@@ -65,7 +65,7 @@ function contentUnLike(){
 
 function likePrediction(){
   button_detection.disabled = true;
-  const { formData, urlDate }  = formDataCSV("si");
+  const { formData, urlDate }  = formDataCSV("si",parsedText);
   addPhoto(ProcessIMG(),parsedText, urlDate)
   addCSVtoS3(formData, urlDate);
   containtText.innerHTML = '';
@@ -73,7 +73,7 @@ function likePrediction(){
 }
 
 function sendUnlikPrediction(){
-  const { formData, urlDate } = formDataCSV("no");
+  const { formData, urlDate } = formDataCSV("no",inputText.value);
   addPhoto(ProcessIMG(),inputText.value, urlDate)
   addCSVtoS3(formData, urlDate);
   containtText.innerHTML = '';
