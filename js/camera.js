@@ -53,10 +53,6 @@ function startWebcam() {
   button_detection.disabled = false;
   initButton.style.display = "none";
   stopButton.style.display = "block";
-
-  document.getElementById('likeButton').style.display = "block";
-  document.getElementById('unlikeButton').style.display = "block";
-  document.querySelector('.text').style.display = "block";
   }
   else {
     console.log('La API de MediaDevices no es compatible con este navegador.');
@@ -71,7 +67,5 @@ function stopWebcam() {
   button_detection.disabled = true;
   animationRunning = false;
   context.clearRect(0, 0, canvas.width, canvas.height);
-  document.getElementById('likeButton').style.display = "none";
-  document.getElementById('unlikeButton').style.display = "none";
-  document.querySelector('.text').style.display = "none";
+  containtText.innerHTML = '';
 }

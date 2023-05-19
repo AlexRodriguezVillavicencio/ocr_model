@@ -61,6 +61,11 @@ canvas{
 }
 
 /* text */
+/* #containtText{
+    display: none;
+} */
+
+
 .text__group{
     width: 100vw;
     bottom: 120px;
@@ -84,8 +89,8 @@ canvas{
 }
 
 #inputText{
-    display: none;
-    width: 200px;
+    /* display: none; */
+    width: 150px;
     height: 32px;
     font-size: 20px;
     border: none;
@@ -102,11 +107,11 @@ canvas{
     border: none;
     filter: invert(100%);
 }
-
+/* 
 #likeButton,
 #unlikeButton{
     display: none;
-}
+} */
 
 /* warning */
 .movil__warning{

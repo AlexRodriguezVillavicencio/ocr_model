@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo Walle</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1379.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -16,18 +17,10 @@
     <div class="container__video">
         <canvas id="canvas"></canvas>
     </div>
-    <div class="text__group">
-        <div class="text">
-            <div id="insertText"></div>
-            <input id="inputText" type="text">
-        </div>
-        <button id="likeButton" onclick="likePrediction()">    
-            <i class="fa-regular fa-thumbs-up"></i>
-        </button>
-        <button id="unlikeButton" >
-            <i class="fa-regular fa-thumbs-down"></i>
-        </button>
+
+    <div id="containtText">
     </div>
+
     <div class="group__button" >
         <div style="display:flex">
             <button id="initButton" onclick="startWebcam()">
@@ -45,7 +38,9 @@
     <div class="movil__warning">
         <h2>Disponible solo para moviles</h2>
     </div>
+    <script src="js/helpers.js" ></script>
     <script src="js/camera.js"></script>
+    <script src="js/aws.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
